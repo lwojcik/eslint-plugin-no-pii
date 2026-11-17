@@ -1,5 +1,8 @@
 # eslint-plugin-no-pii
 
+[![npm version](https://img.shields.io/npm/v/eslint-plugin-no-pii)](https://www.npmjs.com/package/eslint-plugin-no-pii)
+[![Build status](https://ci.appveyor.com/api/projects/status/github/lwojcik/eslint-plugin-no-pii?branch=main&svg=true)](https://ci.appveyor.com/project/lwojcik/eslint-plugin-no-pii/branch/main)
+
 PII linting rules for ESLint 10.
 
 Fork of [shiva-hack/eslint-plugin-pii](https://github.com/shiva-hack/eslint-plugin-pii), modernized and updated for ESLint 10+.
