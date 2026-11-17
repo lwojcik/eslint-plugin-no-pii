@@ -12,7 +12,7 @@
   "homepage": "https://github.com/lwojcik/eslint-plugin-no-pii",
   "scripts": {
     "prepare": "husky",
-    "commit": "cz",
+    "commit": "czg",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "lint": "eslint .",
@@ -39,8 +39,7 @@
     "@eslint/js": "^10.0.1",
     "@release-it/conventional-changelog": "^12.0.2",
     "@types/node": "^26.6.6",
-    "commitizen": "4.3.2",
-    "cz-conventional-changelog": "3.3.0",
+    "czg": "1.14.0",
     "eslint": "^10.0.0",
     "globals": "^17.14.0",
     "husky": "9.1.7",
@@ -57,11 +56,6 @@
     ".": {
       "types": "./dist/index.d.ts",
       "default": "./dist/index.js"
-    }
-  },
-  "config": {
-    "commitizen": {
-      "path": "cz-conventional-changelog"
     }
   },
   "types": "./dist/index.d.ts"
