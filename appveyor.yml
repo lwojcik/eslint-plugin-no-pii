@@ -1,0 +1,17 @@
+image: Ubuntu2404
+platform: x64
+stack: node lts/*
+
+environment:
+  HUSKY: "0"
+
+install:
+  - npm ci
+
+build: off
+
+test_script:
+  - npm run format:check
+  - npm run lint
+  - npm run typecheck
+  - npm test

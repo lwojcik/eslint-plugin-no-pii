@@ -1,0 +1,68 @@
+{
+  "name": "eslint-plugin-no-pii",
+  "version": "1.0.0",
+  "description": "PII linting rules for ESLint 10",
+  "keywords": [
+    "eslint",
+    "eslintplugin",
+    "eslint-plugin",
+    "pii"
+  ],
+  "author": "Łukasz Wójcik",
+  "homepage": "https://github.com/lwojcik/eslint-plugin-no-pii",
+  "scripts": {
+    "prepare": "husky",
+    "commit": "cz",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "lint": "eslint .",
+    "test": "node --test \"tests/**/*.ts\"",
+    "release": "HUSKY=0 GITHUB_TOKEN=$(gh auth token) release-it --no-increment --no-git.commit",
+    "release:prepare": "scripts/release-prepare.sh",
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc --noEmit",
+    "prepack": "rm -rf dist && npm run build"
+  },
+  "engines": {
+    "node": ">=20.19.0"
+  },
+  "repository": {
+    "url": "git+https://github.com/lwojcik/eslint-plugin-no-pii.git"
+  },
+  "license": "ISC",
+  "peerDependencies": {
+    "eslint": ">=9.0.0"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "21.2.4",
+    "@commitlint/config-conventional": "21.2.4",
+    "@eslint/js": "^10.0.1",
+    "@release-it/conventional-changelog": "^12.0.2",
+    "@types/node": "^26.6.6",
+    "commitizen": "4.3.2",
+    "cz-conventional-changelog": "3.3.0",
+    "eslint": "^10.0.0",
+    "globals": "^17.14.0",
+    "husky": "9.1.7",
+    "prettier": "^3.0.0",
+    "release-it": "^21.1.2",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.73.0"
+  },
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  },
+  "types": "./dist/index.d.ts"
+}
