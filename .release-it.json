@@ -1,0 +1,34 @@
+{
+  "git": {
+    "requireBranch": "main",
+    "requireCleanWorkingDir": true,
+    "commitMessage": "chore(release): ${version}",
+    "tagName": "v${version}",
+    "commitArgs": ["-S"],
+    "tagArgs": ["-s"]
+  },
+  "github": {
+    "release": true,
+    "autoGenerate": true,
+    "releaseName": "v${version}"
+  },
+  "npm": {
+    "publish": true
+  },
+  "hooks": {
+    "before:init": [
+      "npm run format:check",
+      "npm run lint",
+      "npm run typecheck",
+      "npm test"
+    ]
+  },
+  "plugins": {
+    "@release-it/conventional-changelog": {
+      "preset": {
+        "name": "conventionalcommits"
+      },
+      "infile": false
+    }
+  }
+}
