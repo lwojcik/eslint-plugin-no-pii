@@ -29,7 +29,6 @@ pull_request_rules:
       merge:
         method: squash
 
-
   - name: Automatic merge of PRs for main when CI passes and owner approves
     conditions:
       - check-success=continuous-integration/appveyor/branch
@@ -44,4 +43,3 @@ pull_request_rules:
     actions:
       merge:
         method: squash
-
