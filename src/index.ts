@@ -7,6 +7,7 @@ import noIban from "./rules/no-iban.ts";
 import noIp from "./rules/no-ip.ts";
 import noSsn from "./rules/no-ssn.ts";
 import noMacAddress from "./rules/no-mac-address.ts";
+import noNationalId from "./rules/no-national-id.ts";
 import noPhoneNumber from "./rules/no-phone-number.ts";
 
 const pkg = JSON.parse(
@@ -22,6 +23,7 @@ const plugin: ESLint.Plugin = {
     "no-iban": noIban,
     "no-ip": noIp,
     "no-mac-address": noMacAddress,
+    "no-national-id": noNationalId,
     "no-phone-number": noPhoneNumber,
     "no-ssn": noSsn,
   },
@@ -38,6 +40,7 @@ plugin.configs = {
       "pii/no-iban": "error",
       "pii/no-ip": "error",
       "pii/no-mac-address": "error",
+      "pii/no-national-id": "error",
       "pii/no-phone-number": "error",
       "pii/no-ssn": "error",
     },
