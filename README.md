@@ -43,6 +43,7 @@ export default [
       "pii/no-pii-identifier": "error",
       "pii/no-ssn": "error",
       "pii/no-url-credentials": "error",
+      "pii/no-vin": "error",
     },
   },
 ];
@@ -61,3 +62,4 @@ export default [
 - `pii/no-pii-identifier` - enforces no hardcoded values for identifiers named like PII (`ssn`, `password`, `dateOfBirth`, ...); options: `identifiers`, `ignore`
 - `pii/no-ssn` - enforces no US Social Security numbers in comments or string literals
 - `pii/no-url-credentials` - enforces no credentials embedded in URLs or connection strings (`scheme://user:password@host`) in comments, string literals or template literals
+- `pii/no-vin` - enforces no vehicle identification numbers (check-digit validated, or labelled `VIN`) in comments or string literals
