@@ -74,6 +74,14 @@ function isHardcodedValue(node: Expression | Pattern | null | undefined) {
   return false;
 }
 
+const ESLINT_SEVERITIES = new Set(["off", "warn", "error"]);
+
+/** An ESLint rule severity such as `"error"`, as in `{ "pii/no-ssn": "error" }`. */
+const isSeverity = (node: Expression | Pattern | null | undefined) =>
+  node?.type === "Literal" &&
+  typeof node.value === "string" &&
+  ESLINT_SEVERITIES.has(node.value);
+
 /** The static name a node is declared/assigned under, if there is one. */
 function nameOf(node: Node | null | undefined, computed = false) {
   if (!node) return null;
@@ -147,7 +155,9 @@ const rule: Rule.RuleModule = {
         if (node.id.type === "Identifier") check(node, node.id.name, node.init);
       },
       Property(node) {
-        if (node.kind === "init" && !node.method) {
+        // Rule-severity maps (`{ "pii/no-ssn": "error" }`) configure ESLint;
+        // they don't assign PII.
+        if (node.kind === "init" && !node.method && !isSeverity(node.value)) {
           check(node, nameOf(node.key, node.computed), node.value);
         }
       },
