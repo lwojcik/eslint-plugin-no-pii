@@ -19,7 +19,9 @@ interface PiiRuleOptions {
   /** Human readable name used in messages, e.g. "IP address". */
   subject: string;
   /** Non-global patterns (stateless `.test`). */
-  patterns: RegExp[];
+  patterns?: RegExp[];
+  /** Custom detector for checks a regex can't express (e.g. checksums). */
+  detect?: (value: string) => boolean;
   /** Also test `<identifier> <literal>` pairs. */
   checkDeclarators?: boolean;
 }
@@ -27,11 +29,13 @@ interface PiiRuleOptions {
 export function createPiiRule({
   description,
   subject,
-  patterns,
+  patterns = [],
+  detect,
   checkDeclarators = false,
 }: PiiRuleOptions): Rule.RuleModule {
   const matches = (value: string) =>
-    patterns.some((pattern) => pattern.test(value));
+    patterns.some((pattern) => pattern.test(value)) ||
+    (detect?.(value) ?? false);
 
   return {
     meta: {
