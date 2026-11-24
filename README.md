@@ -32,10 +32,12 @@ export default [
   {
     plugins: { pii },
     rules: {
+      "pii/no-credit-card": "error",
       "pii/no-email": "error",
       "pii/no-dob": "warn",
       "pii/no-ip": "error",
       "pii/no-phone-number": "error",
+      "pii/no-ssn": "error",
     },
   },
 ];
@@ -43,7 +45,9 @@ export default [
 
 ## Supported Rules
 
+- `pii/no-credit-card` - enforces no credit/debit card numbers (Luhn-validated) in comments or string literals
 - `pii/no-email` - enforces no email in comments or string literals
 - `pii/no-dob` - enforces no birth date in comments or string literals
 - `pii/no-ip` - enforces no IP address in comments or string literals
 - `pii/no-phone-number` - enforces no phone numbers in comments or string literals
+- `pii/no-ssn` - enforces no US Social Security numbers in comments or string literals
