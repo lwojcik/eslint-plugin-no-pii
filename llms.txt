@@ -1,0 +1,44 @@
+# eslint-plugin-no-pii
+
+> ESLint plugin (ESLint >= 9, flat config) that reports PII hardcoded in source: values in comments and string literals, plus hardcoded values assigned to PII-named identifiers. Rule prefix: `pii/`.
+
+## Setup
+
+```js
+// eslint.config.js
+import pii from "eslint-plugin-no-pii";
+export default [pii.configs.recommended];
+```
+
+## If a rule reports
+
+Messages start with "PII Violation:" and say what to do. To resolve a report:
+
+- Do not keep the real value. Load it from an environment variable, secret store or test fixture, or replace it with a redaction token such as `"[REDACTED email address]"`.
+- Do not suppress it. `eslint-disable-line` and `eslint-disable-next-line` do not silence the value-based rules, and block `eslint-disable` defeats their purpose.
+- If a file legitimately needs such values, allow-list it in `eslint.config.js` with a `files` override that sets the rule to `"off"`, so the exception is visible in review. For `pii/no-pii-identifier`, add the exact name to its `ignore` option instead.
+- Never print or copy the matched value into logs, commit messages or PR descriptions.
+
+## Rules
+
+Each rule has a docs page with examples and known limits.
+
+- [pii/no-credit-card](https://github.com/lwojcik/eslint-plugin-no-pii/blob/main/docs/rules/no-credit-card.md): credit/debit card numbers (Luhn + issuer prefix). Recommended: error.
+- [pii/no-crypto-wallet](https://github.com/lwojcik/eslint-plugin-no-pii/blob/main/docs/rules/no-crypto-wallet.md): Bitcoin and Ethereum wallet addresses. Recommended: error.
+- [pii/no-dob](https://github.com/lwojcik/eslint-plugin-no-pii/blob/main/docs/rules/no-dob.md): birth dates near birth-related words. Recommended: warn.
+- [pii/no-email](https://github.com/lwojcik/eslint-plugin-no-pii/blob/main/docs/rules/no-email.md): email addresses. Recommended: error.
+- [pii/no-iban](https://github.com/lwojcik/eslint-plugin-no-pii/blob/main/docs/rules/no-iban.md): IBANs (length + mod-97). Recommended: error.
+- [pii/no-imei](https://github.com/lwojcik/eslint-plugin-no-pii/blob/main/docs/rules/no-imei.md): IMEI numbers (Luhn). Recommended: error.
+- [pii/no-ip](https://github.com/lwojcik/eslint-plugin-no-pii/blob/main/docs/rules/no-ip.md): IPv4 and IPv6 addresses. Recommended: error.
+- [pii/no-mac-address](https://github.com/lwojcik/eslint-plugin-no-pii/blob/main/docs/rules/no-mac-address.md): MAC addresses. Recommended: error.
+- [pii/no-national-id](https://github.com/lwojcik/eslint-plugin-no-pii/blob/main/docs/rules/no-national-id.md): Polish PESEL/NIP, UK NINO, Spanish DNI/NIE. Recommended: error.
+- [pii/no-phone-number](https://github.com/lwojcik/eslint-plugin-no-pii/blob/main/docs/rules/no-phone-number.md): phone numbers (FR, DE, UK, US formats). Recommended: error.
+- [pii/no-pii-identifier](https://github.com/lwojcik/eslint-plugin-no-pii/blob/main/docs/rules/no-pii-identifier.md): hardcoded values assigned to PII-named identifiers (ssn, password, dateOfBirth, ...); options: identifiers, ignore. Recommended: error.
+- [pii/no-ssn](https://github.com/lwojcik/eslint-plugin-no-pii/blob/main/docs/rules/no-ssn.md): US Social Security numbers. Recommended: error.
+- [pii/no-url-credentials](https://github.com/lwojcik/eslint-plugin-no-pii/blob/main/docs/rules/no-url-credentials.md): scheme://user:password@host credentials. Recommended: error.
+- [pii/no-vin](https://github.com/lwojcik/eslint-plugin-no-pii/blob/main/docs/rules/no-vin.md): vehicle identification numbers. Recommended: error.
+
+## Optional
+
+- [README](https://github.com/lwojcik/eslint-plugin-no-pii/blob/main/README.md): installation and configuration
+- [AGENTS.md](https://github.com/lwojcik/eslint-plugin-no-pii/blob/main/AGENTS.md): contributing guide for coding agents (adding a rule, commands, conventions)

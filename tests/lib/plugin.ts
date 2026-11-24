@@ -2,7 +2,7 @@ import plugin from "../../src/index.ts";
 import { Linter } from "eslint";
 import { describe, it } from "node:test";
 import assert from "node:assert/strict";
-import { existsSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 
 const rules = Object.entries(plugin.rules ?? {});
 
@@ -11,6 +11,13 @@ describe("plugin", () => {
     for (const [name, rule] of rules) {
       assert.match(rule.meta?.docs?.url ?? "", new RegExp(`/${name}\\.md$`));
       assert.ok(existsSync(`docs/rules/${name}.md`), `docs/rules/${name}.md`);
+    }
+  });
+
+  it("lists every rule in llms.txt", () => {
+    const llms = readFileSync("llms.txt", "utf8");
+    for (const [name] of rules) {
+      assert.ok(llms.includes(`pii/${name}]`), `llms.txt mentions ${name}`);
     }
   });
 
