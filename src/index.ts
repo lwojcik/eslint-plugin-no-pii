@@ -5,6 +5,7 @@ import noDob from "./rules/no-dob.ts";
 import noEmail from "./rules/no-email.ts";
 import noIp from "./rules/no-ip.ts";
 import noSsn from "./rules/no-ssn.ts";
+import noMacAddress from "./rules/no-mac-address.ts";
 import noPhoneNumber from "./rules/no-phone-number.ts";
 
 const pkg = JSON.parse(
@@ -18,6 +19,7 @@ const plugin: ESLint.Plugin = {
     "no-dob": noDob,
     "no-email": noEmail,
     "no-ip": noIp,
+    "no-mac-address": noMacAddress,
     "no-phone-number": noPhoneNumber,
     "no-ssn": noSsn,
   },
@@ -32,6 +34,7 @@ plugin.configs = {
       "pii/no-email": "error",
       "pii/no-dob": "warn",
       "pii/no-ip": "error",
+      "pii/no-mac-address": "error",
       "pii/no-phone-number": "error",
       "pii/no-ssn": "error",
     },
