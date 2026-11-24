@@ -32,6 +32,9 @@ ruleTester.run("no-pii-identifier", rule, {
     // Destructuring, methods and getters are not assignments of a literal
     { code: "var { password } = user;" },
     { code: "var o = { password() { return 'x'; } };" },
+    // ESLint rule-severity maps
+    { code: 'var rules = { "pii/no-ssn": "error", "no-dob": "warn" };' },
+    { code: 'var rules = { "pii/no-iban": "off" };' },
     // Options
     {
       code: 'var password = "x";',

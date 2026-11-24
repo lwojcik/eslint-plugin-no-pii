@@ -33,6 +33,7 @@ export default [
     plugins: { pii },
     rules: {
       "pii/no-credit-card": "error",
+      "pii/no-crypto-wallet": "error",
       "pii/no-dob": "warn",
       "pii/no-email": "error",
       "pii/no-iban": "error",
@@ -55,6 +56,7 @@ export default [
 Each rule has its own page with examples, fix guidance and known limits.
 
 - [`pii/no-credit-card`](docs/rules/no-credit-card.md) - credit/debit card numbers (Luhn-validated)
+- [`pii/no-crypto-wallet`](docs/rules/no-crypto-wallet.md) - Bitcoin and Ethereum wallet addresses
 - [`pii/no-dob`](docs/rules/no-dob.md) - birth dates
 - [`pii/no-email`](docs/rules/no-email.md) - email addresses
 - [`pii/no-iban`](docs/rules/no-iban.md) - IBANs (length and mod-97 validated)
