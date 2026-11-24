@@ -33,8 +33,8 @@ export default [
     plugins: { pii },
     rules: {
       "pii/no-credit-card": "error",
-      "pii/no-email": "error",
       "pii/no-dob": "warn",
+      "pii/no-email": "error",
       "pii/no-iban": "error",
       "pii/no-imei": "error",
       "pii/no-ip": "error",
@@ -52,16 +52,26 @@ export default [
 
 ## Supported Rules
 
-- `pii/no-credit-card` - enforces no credit/debit card numbers (Luhn-validated) in comments or string literals
-- `pii/no-email` - enforces no email in comments or string literals
-- `pii/no-dob` - enforces no birth date in comments or string literals
-- `pii/no-iban` - enforces no IBAN (length and mod-97 validated) in comments or string literals
-- `pii/no-imei` - enforces no IMEI device identifiers (Luhn-validated) in comments or string literals
-- `pii/no-ip` - enforces no IP address in comments or string literals
-- `pii/no-mac-address` - enforces no MAC address in comments or string literals
-- `pii/no-national-id` - enforces no national ID numbers (Polish PESEL/NIP, UK NINO, Spanish DNI/NIE) in comments or string literals
-- `pii/no-phone-number` - enforces no phone numbers in comments or string literals
-- `pii/no-pii-identifier` - enforces no hardcoded values for identifiers named like PII (`ssn`, `password`, `dateOfBirth`, ...); options: `identifiers`, `ignore`
-- `pii/no-ssn` - enforces no US Social Security numbers in comments or string literals
-- `pii/no-url-credentials` - enforces no credentials embedded in URLs or connection strings (`scheme://user:password@host`) in comments, string literals or template literals
-- `pii/no-vin` - enforces no vehicle identification numbers (check-digit validated, or labelled `VIN`) in comments or string literals
+Each rule has its own page with examples, fix guidance and known limits.
+
+- [`pii/no-credit-card`](docs/rules/no-credit-card.md) - credit/debit card numbers (Luhn-validated)
+- [`pii/no-dob`](docs/rules/no-dob.md) - birth dates
+- [`pii/no-email`](docs/rules/no-email.md) - email addresses
+- [`pii/no-iban`](docs/rules/no-iban.md) - IBANs (length and mod-97 validated)
+- [`pii/no-imei`](docs/rules/no-imei.md) - IMEI numbers (Luhn-validated)
+- [`pii/no-ip`](docs/rules/no-ip.md) - IPv4 and IPv6 addresses
+- [`pii/no-mac-address`](docs/rules/no-mac-address.md) - MAC addresses
+- [`pii/no-national-id`](docs/rules/no-national-id.md) - national ID numbers (Polish PESEL/NIP, UK NINO, Spanish DNI/NIE)
+- [`pii/no-phone-number`](docs/rules/no-phone-number.md) - phone numbers
+- [`pii/no-pii-identifier`](docs/rules/no-pii-identifier.md) - hardcoded values assigned to PII-named identifiers (`ssn`, `password`, …)
+- [`pii/no-ssn`](docs/rules/no-ssn.md) - US Social Security numbers
+- [`pii/no-url-credentials`](docs/rules/no-url-credentials.md) - credentials embedded in URLs and connection strings
+- [`pii/no-vin`](docs/rules/no-vin.md) - vehicle identification numbers
+
+## Fixing reports (for humans and AI agents)
+
+Every message says what was found and how to fix it. In short:
+
+- Don't hardcode the value: load it from env/config/test fixtures, or replace it with a redaction token such as `"[REDACTED email address]"`.
+- `// eslint-disable-line` and `// eslint-disable-next-line` do **not** silence the value-based rules. Don't try to suppress them.
+- If a file legitimately needs such values, allow-list it in `eslint.config.js` (`{ files: [...], rules: { "pii/no-email": "off" } }`) so the exception shows up in review. For `pii/no-pii-identifier`, use its `ignore` option.

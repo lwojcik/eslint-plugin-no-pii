@@ -25,16 +25,11 @@ ruleTester.run("no-mac-address", rule, {
   invalid: [
     {
       code: '// 00:1A:2B:3C:4D:5E\nvar s = "00-1a-2b-3c-4d-5e";',
-      errors: [
-        { message: "PII Violation: cannot use MAC address in a comment" },
-        { message: "PII Violation: cannot use MAC address in a literal" },
-      ],
+      errors: [{ messageId: "comment" }, { messageId: "literal" }],
     },
     {
       code: 'var s = "device 001a.2b3c.4d5e online";',
-      errors: [
-        { message: "PII Violation: cannot use MAC address in a literal" },
-      ],
+      errors: [{ messageId: "literal" }],
     },
   ],
 });

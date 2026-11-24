@@ -6,7 +6,9 @@ RuleTester.describe = describe;
 RuleTester.it = it;
 
 const error = (name: string, term: string) => ({
-  message: `PII Violation: "${name}" looks like PII (${term}) and cannot be assigned a hardcoded value`,
+  message: new RegExp(
+    `^PII Violation: "${name}" looks like PII \\(${term}\\) and cannot be assigned a hardcoded value\\. `,
+  ),
 });
 
 const ruleTester = new RuleTester();

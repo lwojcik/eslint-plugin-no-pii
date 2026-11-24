@@ -22,14 +22,11 @@ ruleTester.run("no-iban", rule, {
   invalid: [
     {
       code: '// DE89 3704 0044 0532 0130 00\nvar s = "GB82WEST12345698765432";',
-      errors: [
-        { message: "PII Violation: cannot use IBAN in a comment" },
-        { message: "PII Violation: cannot use IBAN in a literal" },
-      ],
+      errors: [{ messageId: "comment" }, { messageId: "literal" }],
     },
     {
       code: 'var s = "PL61 1090 1014 0000 0712 1981 2874 OWNER";',
-      errors: [{ message: "PII Violation: cannot use IBAN in a literal" }],
+      errors: [{ messageId: "literal" }],
     },
   ],
 });

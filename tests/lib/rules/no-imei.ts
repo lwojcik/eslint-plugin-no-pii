@@ -5,8 +5,8 @@ import { describe, it } from "node:test";
 RuleTester.describe = describe;
 RuleTester.it = it;
 
-const literal = { message: "PII Violation: cannot use IMEI in a literal" };
-const comment = { message: "PII Violation: cannot use IMEI in a comment" };
+const literal = { messageId: "literal" };
+const comment = { messageId: "comment" };
 
 const ruleTester = new RuleTester();
 ruleTester.run("no-imei", rule, {

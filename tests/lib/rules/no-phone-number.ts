@@ -18,10 +18,10 @@ ruleTester.run("no-phone-number", rule, {
       code: '// +1-541-754-3010\nvar numb = "+1-541-754-3010";',
       errors: [
         {
-          message: "PII Violation: cannot use phone number in a comment",
+          messageId: "comment",
         },
         {
-          message: "PII Violation: cannot use phone number in a literal",
+          messageId: "literal",
         },
       ],
     },
@@ -29,10 +29,10 @@ ruleTester.run("no-phone-number", rule, {
       code: '// (541) 754-3010\nvar numb = "(541) 754-3010";',
       errors: [
         {
-          message: "PII Violation: cannot use phone number in a comment",
+          messageId: "comment",
         },
         {
-          message: "PII Violation: cannot use phone number in a literal",
+          messageId: "literal",
         },
       ],
     },
@@ -40,10 +40,10 @@ ruleTester.run("no-phone-number", rule, {
       code: '// 001-541-754-3010\nvar numb = "001-541-754-3010";',
       errors: [
         {
-          message: "PII Violation: cannot use phone number in a comment",
+          messageId: "comment",
         },
         {
-          message: "PII Violation: cannot use phone number in a literal",
+          messageId: "literal",
         },
       ],
     },
@@ -51,10 +51,10 @@ ruleTester.run("no-phone-number", rule, {
       code: '// 1-541-754-3010\nvar numb = "1-541-754-3010";',
       errors: [
         {
-          message: "PII Violation: cannot use phone number in a comment",
+          messageId: "comment",
         },
         {
-          message: "PII Violation: cannot use phone number in a literal",
+          messageId: "literal",
         },
       ],
     },
@@ -62,10 +62,10 @@ ruleTester.run("no-phone-number", rule, {
       code: '// +44 7911 123456\nvar numb = "+44 7911 123456";',
       errors: [
         {
-          message: "PII Violation: cannot use phone number in a comment",
+          messageId: "comment",
         },
         {
-          message: "PII Violation: cannot use phone number in a literal",
+          messageId: "literal",
         },
       ],
     },

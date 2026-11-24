@@ -104,7 +104,7 @@ const rule: Rule.RuleModule = {
     ],
     messages: {
       identifier:
-        'PII Violation: "{{name}}" looks like PII ({{term}}) and cannot be assigned a hardcoded value',
+        'PII Violation: "{{name}}" looks like PII ({{term}}) and cannot be assigned a hardcoded value. Load it from an environment variable, secret store or test fixture instead. If this is a false positive, add "{{name}}" to the rule\'s `ignore` option in your ESLint config.',
     },
   },
 
