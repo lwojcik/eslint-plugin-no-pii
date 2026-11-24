@@ -41,6 +41,7 @@ export default [
       "pii/no-national-id": "error",
       "pii/no-phone-number": "error",
       "pii/no-ssn": "error",
+      "pii/no-url-credentials": "error",
     },
   },
 ];
@@ -57,3 +58,4 @@ export default [
 - `pii/no-national-id` - enforces no national ID numbers (Polish PESEL/NIP, UK NINO, Spanish DNI/NIE) in comments or string literals
 - `pii/no-phone-number` - enforces no phone numbers in comments or string literals
 - `pii/no-ssn` - enforces no US Social Security numbers in comments or string literals
+- `pii/no-url-credentials` - enforces no credentials embedded in URLs or connection strings (`scheme://user:password@host`) in comments, string literals or template literals

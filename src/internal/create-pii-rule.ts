@@ -24,6 +24,8 @@ interface PiiRuleOptions {
   detect?: (value: string) => boolean;
   /** Also test `<identifier> <literal>` pairs. */
   checkDeclarators?: boolean;
+  /** Also test the static text parts of template literals. */
+  checkTemplateLiterals?: boolean;
 }
 
 export function createPiiRule({
@@ -32,6 +34,7 @@ export function createPiiRule({
   patterns = [],
   detect,
   checkDeclarators = false,
+  checkTemplateLiterals = false,
 }: PiiRuleOptions): Rule.RuleModule {
   const matches = (value: string) =>
     patterns.some((pattern) => pattern.test(value)) ||
@@ -70,6 +73,13 @@ export function createPiiRule({
             report(node.loc, "literal");
           }
         },
+        ...(checkTemplateLiterals && {
+          TemplateElement(node) {
+            if (node.value.cooked && matches(node.value.cooked)) {
+              report(node.loc, "literal");
+            }
+          },
+        }),
         ...(checkDeclarators && {
           VariableDeclarator(node) {
             if (node.id.type !== "Identifier") return;
