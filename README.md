@@ -40,6 +40,7 @@ export default [
       "pii/no-mac-address": "error",
       "pii/no-national-id": "error",
       "pii/no-phone-number": "error",
+      "pii/no-pii-identifier": "error",
       "pii/no-ssn": "error",
     },
   },
@@ -56,4 +57,5 @@ export default [
 - `pii/no-mac-address` - enforces no MAC address in comments or string literals
 - `pii/no-national-id` - enforces no national ID numbers (Polish PESEL/NIP, UK NINO, Spanish DNI/NIE) in comments or string literals
 - `pii/no-phone-number` - enforces no phone numbers in comments or string literals
+- `pii/no-pii-identifier` - enforces no hardcoded values for identifiers named like PII (`ssn`, `password`, `dateOfBirth`, ...); options: `identifiers`, `ignore`
 - `pii/no-ssn` - enforces no US Social Security numbers in comments or string literals

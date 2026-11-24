@@ -8,6 +8,7 @@ import noIp from "./rules/no-ip.ts";
 import noSsn from "./rules/no-ssn.ts";
 import noMacAddress from "./rules/no-mac-address.ts";
 import noNationalId from "./rules/no-national-id.ts";
+import noPiiIdentifier from "./rules/no-pii-identifier.ts";
 import noPhoneNumber from "./rules/no-phone-number.ts";
 
 const pkg = JSON.parse(
@@ -25,6 +26,7 @@ const plugin: ESLint.Plugin = {
     "no-mac-address": noMacAddress,
     "no-national-id": noNationalId,
     "no-phone-number": noPhoneNumber,
+    "no-pii-identifier": noPiiIdentifier,
     "no-ssn": noSsn,
   },
 };
@@ -42,6 +44,7 @@ plugin.configs = {
       "pii/no-mac-address": "error",
       "pii/no-national-id": "error",
       "pii/no-phone-number": "error",
+      "pii/no-pii-identifier": "error",
       "pii/no-ssn": "error",
     },
   },
