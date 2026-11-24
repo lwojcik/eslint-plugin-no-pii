@@ -36,6 +36,7 @@ export default [
       "pii/no-email": "error",
       "pii/no-dob": "warn",
       "pii/no-iban": "error",
+      "pii/no-imei": "error",
       "pii/no-ip": "error",
       "pii/no-mac-address": "error",
       "pii/no-national-id": "error",
@@ -54,6 +55,7 @@ export default [
 - `pii/no-email` - enforces no email in comments or string literals
 - `pii/no-dob` - enforces no birth date in comments or string literals
 - `pii/no-iban` - enforces no IBAN (length and mod-97 validated) in comments or string literals
+- `pii/no-imei` - enforces no IMEI device identifiers (Luhn-validated) in comments or string literals
 - `pii/no-ip` - enforces no IP address in comments or string literals
 - `pii/no-mac-address` - enforces no MAC address in comments or string literals
 - `pii/no-national-id` - enforces no national ID numbers (Polish PESEL/NIP, UK NINO, Spanish DNI/NIE) in comments or string literals
