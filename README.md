@@ -33,6 +33,7 @@ export default [
     plugins: { pii },
     rules: {
       "pii/no-credit-card": "error",
+      "pii/no-crypto-wallet": "error",
       "pii/no-email": "error",
       "pii/no-dob": "warn",
       "pii/no-iban": "error",
@@ -53,6 +54,7 @@ export default [
 ## Supported Rules
 
 - `pii/no-credit-card` - enforces no credit/debit card numbers (Luhn-validated) in comments or string literals
+- `pii/no-crypto-wallet` - enforces no Bitcoin or Ethereum wallet addresses in comments or string literals
 - `pii/no-email` - enforces no email in comments or string literals
 - `pii/no-dob` - enforces no birth date in comments or string literals
 - `pii/no-iban` - enforces no IBAN (length and mod-97 validated) in comments or string literals

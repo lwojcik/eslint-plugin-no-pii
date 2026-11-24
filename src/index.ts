@@ -1,6 +1,7 @@
 import type { ESLint } from "eslint";
 import { readFileSync } from "node:fs";
 import noCreditCard from "./rules/no-credit-card.ts";
+import noCryptoWallet from "./rules/no-crypto-wallet.ts";
 import noDob from "./rules/no-dob.ts";
 import noEmail from "./rules/no-email.ts";
 import noIban from "./rules/no-iban.ts";
@@ -22,6 +23,7 @@ const plugin: ESLint.Plugin = {
   meta: { name: pkg.name, version: pkg.version },
   rules: {
     "no-credit-card": noCreditCard,
+    "no-crypto-wallet": noCryptoWallet,
     "no-dob": noDob,
     "no-email": noEmail,
     "no-iban": noIban,
@@ -43,6 +45,7 @@ plugin.configs = {
     plugins: { pii: plugin },
     rules: {
       "pii/no-credit-card": "error",
+      "pii/no-crypto-wallet": "error",
       "pii/no-email": "error",
       "pii/no-dob": "warn",
       "pii/no-iban": "error",
