@@ -5,6 +5,7 @@ import noDob from "./rules/no-dob.ts";
 import noEmail from "./rules/no-email.ts";
 import noIban from "./rules/no-iban.ts";
 import noIp from "./rules/no-ip.ts";
+import noUrlCredentials from "./rules/no-url-credentials.ts";
 import noSsn from "./rules/no-ssn.ts";
 import noMacAddress from "./rules/no-mac-address.ts";
 import noNationalId from "./rules/no-national-id.ts";
@@ -28,6 +29,7 @@ const plugin: ESLint.Plugin = {
     "no-phone-number": noPhoneNumber,
     "no-pii-identifier": noPiiIdentifier,
     "no-ssn": noSsn,
+    "no-url-credentials": noUrlCredentials,
   },
 };
 
@@ -46,6 +48,7 @@ plugin.configs = {
       "pii/no-phone-number": "error",
       "pii/no-pii-identifier": "error",
       "pii/no-ssn": "error",
+      "pii/no-url-credentials": "error",
     },
   },
 };

@@ -42,6 +42,7 @@ export default [
       "pii/no-phone-number": "error",
       "pii/no-pii-identifier": "error",
       "pii/no-ssn": "error",
+      "pii/no-url-credentials": "error",
     },
   },
 ];
@@ -59,3 +60,4 @@ export default [
 - `pii/no-phone-number` - enforces no phone numbers in comments or string literals
 - `pii/no-pii-identifier` - enforces no hardcoded values for identifiers named like PII (`ssn`, `password`, `dateOfBirth`, ...); options: `identifiers`, `ignore`
 - `pii/no-ssn` - enforces no US Social Security numbers in comments or string literals
+- `pii/no-url-credentials` - enforces no credentials embedded in URLs or connection strings (`scheme://user:password@host`) in comments, string literals or template literals
