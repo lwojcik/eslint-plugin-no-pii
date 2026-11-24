@@ -25,6 +25,12 @@ ruleTester.run("no-pii-identifier", rule, {
     { code: "var password = null;" },
     { code: "var hasPassword = true;" },
     { code: "var dob;" },
+    // Names that cannot be resolved statically
+    { code: 'var o = { [password]: "x" };' },
+    { code: 'user[password] = "x";' },
+    { code: 'user[getKey()] = "x";' },
+    // Only plain assignment counts
+    { code: 'password += "x";' },
     // Term is not the end of the name
     { code: "var config = { passwordMinLength: 8 };" },
     { code: 'var passportOffice = "Warsaw";' },

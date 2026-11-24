@@ -17,6 +17,7 @@
     "format:check": "prettier --check .",
     "lint": "eslint .",
     "test": "node --test \"tests/**/*.ts\"",
+    "test:coverage": "mkdir -p coverage && node --test --experimental-test-coverage --test-coverage-exclude=\"tests/**\" --test-reporter=spec --test-reporter-destination=stdout --test-reporter=lcov --test-reporter-destination=coverage/lcov.info \"tests/**/*.ts\"",
     "release": "HUSKY=0 GITHUB_TOKEN=$(gh auth token) release-it --no-increment --no-git.commit",
     "release:prepare": "scripts/release-prepare.sh",
     "build": "tsc -p tsconfig.build.json",

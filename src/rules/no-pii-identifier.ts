@@ -83,8 +83,7 @@ const isSeverity = (node: Expression | Pattern | null | undefined) =>
   ESLINT_SEVERITIES.has(node.value);
 
 /** The static name a node is declared/assigned under, if there is one. */
-function nameOf(node: Node | null | undefined, computed = false) {
-  if (!node) return null;
+function nameOf(node: Node, computed = false) {
   if (node.type === "Identifier") return computed ? null : node.name;
   if (node.type === "PrivateIdentifier") return node.name;
   if (node.type === "Literal" && typeof node.value === "string") {
