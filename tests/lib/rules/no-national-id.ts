@@ -6,10 +6,10 @@ RuleTester.describe = describe;
 RuleTester.it = it;
 
 const literal = {
-  message: "PII Violation: cannot use national ID number in a literal",
+  messageId: "literal",
 };
 const comment = {
-  message: "PII Violation: cannot use national ID number in a comment",
+  messageId: "comment",
 };
 
 const ruleTester = new RuleTester();

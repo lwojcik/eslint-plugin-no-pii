@@ -19,10 +19,10 @@ ruleTester.run("no-dob", rule, {
       code: '// my birthdate is 12-10-1992\nvar dob = "12-10-1992"',
       errors: [
         {
-          message: "PII Violation: cannot use date of birth in a comment",
+          messageId: "comment",
         },
         {
-          message: "PII Violation: cannot use date of birth in a literal",
+          messageId: "literal",
         },
       ],
     },

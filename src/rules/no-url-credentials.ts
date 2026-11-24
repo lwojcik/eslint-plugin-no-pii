@@ -12,6 +12,8 @@ export default createPiiRule({
   description: "enforces no credentials embedded in URLs or connection strings",
   subject: "URL credentials",
   checkTemplateLiterals: true,
+  literalFix:
+    "Read the credentials from environment variables or a secret store, e.g. `postgres://${user}:${password}@host/db`.",
   detect: (value) =>
     Array.from(value.matchAll(URL_CREDENTIALS)).some(
       (match) => !PLACEHOLDER.test(match[2]!),

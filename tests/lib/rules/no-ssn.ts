@@ -23,12 +23,10 @@ ruleTester.run("no-ssn", rule, {
       code: '// 123-45-6789\nvar s = "123 45 6789";',
       errors: [
         {
-          message:
-            "PII Violation: cannot use social security number in a comment",
+          messageId: "comment",
         },
         {
-          message:
-            "PII Violation: cannot use social security number in a literal",
+          messageId: "literal",
         },
       ],
     },

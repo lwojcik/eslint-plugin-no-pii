@@ -1,4 +1,4 @@
-import type { ESLint } from "eslint";
+import type { ESLint, Rule } from "eslint";
 import { readFileSync } from "node:fs";
 import noCreditCard from "./rules/no-credit-card.ts";
 import noCryptoWallet from "./rules/no-crypto-wallet.ts";
@@ -19,9 +19,28 @@ const pkg = JSON.parse(
   readFileSync(new URL("../package.json", import.meta.url), "utf8"),
 );
 
+const DOCS_BASE =
+  "https://github.com/lwojcik/eslint-plugin-no-pii/blob/main/docs/rules";
+
+const withDocs = (
+  rules: Record<string, Rule.RuleModule>,
+): Record<string, Rule.RuleModule> =>
+  Object.fromEntries(
+    Object.entries(rules).map(([name, rule]) => [
+      name,
+      {
+        ...rule,
+        meta: {
+          ...rule.meta,
+          docs: { ...rule.meta?.docs, url: `${DOCS_BASE}/${name}.md` },
+        },
+      },
+    ]),
+  );
+
 const plugin: ESLint.Plugin = {
   meta: { name: pkg.name, version: pkg.version },
-  rules: {
+  rules: withDocs({
     "no-credit-card": noCreditCard,
     "no-crypto-wallet": noCryptoWallet,
     "no-dob": noDob,
@@ -36,7 +55,7 @@ const plugin: ESLint.Plugin = {
     "no-ssn": noSsn,
     "no-url-credentials": noUrlCredentials,
     "no-vin": noVin,
-  },
+  }),
 };
 
 plugin.configs = {

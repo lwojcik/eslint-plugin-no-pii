@@ -6,10 +6,10 @@ RuleTester.describe = describe;
 RuleTester.it = it;
 
 const literal = {
-  message: "PII Violation: cannot use crypto wallet address in a literal",
+  messageId: "literal",
 };
 const comment = {
-  message: "PII Violation: cannot use crypto wallet address in a comment",
+  messageId: "comment",
 };
 
 const ruleTester = new RuleTester();

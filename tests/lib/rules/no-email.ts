@@ -18,10 +18,10 @@ ruleTester.run("no-email", rule, {
       code: '// email@test.com\nvar test = "email@test.com";',
       errors: [
         {
-          message: "PII Violation: cannot use email address in a comment",
+          messageId: "comment",
         },
         {
-          message: "PII Violation: cannot use email address in a literal",
+          messageId: "literal",
         },
       ],
     },

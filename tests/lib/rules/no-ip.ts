@@ -6,10 +6,10 @@ RuleTester.describe = describe;
 RuleTester.it = it;
 
 const literal = {
-  message: "PII Violation: cannot use IP address in a literal",
+  messageId: "literal",
 };
 const comment = {
-  message: "PII Violation: cannot use IP address in a comment",
+  messageId: "comment",
 };
 
 const ruleTester = new RuleTester();
@@ -41,10 +41,10 @@ ruleTester.run("no-ip", rule, {
       code: '// 192.168.1.1\nvar ip = "127.0.0.1"',
       errors: [
         {
-          message: "PII Violation: cannot use IP address in a comment",
+          messageId: "comment",
         },
         {
-          message: "PII Violation: cannot use IP address in a literal",
+          messageId: "literal",
         },
       ],
     },

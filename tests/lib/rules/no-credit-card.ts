@@ -22,10 +22,10 @@ ruleTester.run("no-credit-card", rule, {
       code: '// 4111 1111 1111 1111\nvar s = "5500-0000-0000-0004";',
       errors: [
         {
-          message: "PII Violation: cannot use credit card number in a comment",
+          messageId: "comment",
         },
         {
-          message: "PII Violation: cannot use credit card number in a literal",
+          messageId: "literal",
         },
       ],
     },
@@ -33,7 +33,7 @@ ruleTester.run("no-credit-card", rule, {
       code: 'var s = "amex 378282246310005 on file";',
       errors: [
         {
-          message: "PII Violation: cannot use credit card number in a literal",
+          messageId: "literal",
         },
       ],
     },

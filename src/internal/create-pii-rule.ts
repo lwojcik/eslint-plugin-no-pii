@@ -6,8 +6,9 @@ import type { Rule } from "eslint";
 import type { SourceLocation } from "estree";
 
 /**
- * Report location that ignores `eslint-disable` comments (column -1 forces the
- * report to be treated as covering the whole start line).
+ * Report location that ignores `eslint-disable-line` / `-next-line` directives
+ * (column -1 forces the report to be treated as covering the whole start line).
+ * Block `/* eslint-disable *\/` ranges still apply.
  */
 const toForceLocation = (loc: SourceLocation) => ({
   start: { line: loc.start.line, column: -1 },
@@ -26,7 +27,12 @@ interface PiiRuleOptions {
   checkDeclarators?: boolean;
   /** Also test the static text parts of template literals. */
   checkTemplateLiterals?: boolean;
+  /** Rule-specific advice for literals; replaces the generic redaction hint. */
+  literalFix?: string;
 }
+
+const NO_SUPPRESS =
+  "eslint-disable-line and eslint-disable-next-line do not silence this rule; do not try to suppress it.";
 
 export function createPiiRule({
   description,
@@ -35,6 +41,7 @@ export function createPiiRule({
   detect,
   checkDeclarators = false,
   checkTemplateLiterals = false,
+  literalFix,
 }: PiiRuleOptions): Rule.RuleModule {
   const matches = (value: string) =>
     patterns.some((pattern) => pattern.test(value)) ||
@@ -46,8 +53,8 @@ export function createPiiRule({
       docs: { description },
       schema: [],
       messages: {
-        comment: `PII Violation: cannot use ${subject} in a comment`,
-        literal: `PII Violation: cannot use ${subject} in a literal`,
+        comment: `PII Violation: cannot use ${subject} in a comment. Remove it or replace it with "[REDACTED ${subject}]". ${NO_SUPPRESS}`,
+        literal: `PII Violation: cannot use ${subject} in a literal. ${literalFix ?? `Load it from env/config/test fixtures, or replace it with "[REDACTED ${subject}]".`} ${NO_SUPPRESS}`,
       },
     },
 
