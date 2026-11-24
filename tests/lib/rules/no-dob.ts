@@ -8,6 +8,8 @@ RuleTester.it = it;
 const ruleTester = new RuleTester();
 ruleTester.run("no-dob", rule, {
   valid: [
+    // Destructuring declarators have no single name to check
+    { code: 'const [dob] = "1990-01-01";' },
     {
       code: '// this is a plain string\nvar dob = "no dob here";',
     },

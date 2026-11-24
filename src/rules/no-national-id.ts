@@ -3,7 +3,7 @@ import { createPiiRule } from "../internal/create-pii-rule.ts";
 const digitsOf = (value: string) => Array.from(value, Number);
 
 const weightedSum = (digits: number[], weights: number[]) =>
-  weights.reduce((sum, weight, i) => sum + weight * (digits[i] ?? 0), 0);
+  weights.reduce((sum, weight, i) => sum + weight * digits[i]!, 0);
 
 // --- Poland: PESEL (11 digits, weighted checksum, encoded birth date) -------
 
