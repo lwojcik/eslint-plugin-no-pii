@@ -31,7 +31,7 @@
     "type": "git",
     "url": "git+https://github.com/lwojcik/eslint-plugin-no-pii.git"
   },
-  "license": "ISC",
+  "license": "MIT",
   "peerDependencies": {
     "eslint": ">=9.0.0"
   },
