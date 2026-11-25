@@ -28,6 +28,7 @@
     "node": ">=20.19.0"
   },
   "repository": {
+    "type": "git",
     "url": "git+https://github.com/lwojcik/eslint-plugin-no-pii.git"
   },
   "license": "ISC",
@@ -48,6 +49,9 @@
     "release-it": "^21.1.2",
     "typescript": "^6.0.3",
     "typescript-eslint": "^8.73.0"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "files": [
     "dist",
