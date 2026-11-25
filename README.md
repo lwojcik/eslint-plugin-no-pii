@@ -40,6 +40,7 @@ export default [
       "pii/no-iban": "error",
       "pii/no-imei": "error",
       "pii/no-ip": "error",
+      "pii/no-jwt": "error",
       "pii/no-mac-address": "error",
       "pii/no-national-id": "error",
       "pii/no-phone-number": "error",
@@ -63,6 +64,7 @@ Each rule has its own page with examples, fix guidance and known limits.
 - [`pii/no-iban`](docs/rules/no-iban.md) - IBANs (length and mod-97 validated)
 - [`pii/no-imei`](docs/rules/no-imei.md) - IMEI numbers (Luhn-validated)
 - [`pii/no-ip`](docs/rules/no-ip.md) - IPv4 and IPv6 addresses
+- [`pii/no-jwt`](docs/rules/no-jwt.md) - JSON Web Tokens
 - [`pii/no-mac-address`](docs/rules/no-mac-address.md) - MAC addresses
 - [`pii/no-national-id`](docs/rules/no-national-id.md) - national ID numbers (Polish PESEL/NIP, UK NINO, Spanish DNI/NIE)
 - [`pii/no-phone-number`](docs/rules/no-phone-number.md) - phone numbers

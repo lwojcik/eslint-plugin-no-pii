@@ -30,6 +30,7 @@ Each rule has a docs page with examples and known limits.
 - [pii/no-iban](https://github.com/lwojcik/eslint-plugin-no-pii/blob/main/docs/rules/no-iban.md): IBANs (length + mod-97). Recommended: error.
 - [pii/no-imei](https://github.com/lwojcik/eslint-plugin-no-pii/blob/main/docs/rules/no-imei.md): IMEI numbers (Luhn). Recommended: error.
 - [pii/no-ip](https://github.com/lwojcik/eslint-plugin-no-pii/blob/main/docs/rules/no-ip.md): IPv4 and IPv6 addresses. Recommended: error.
+- [pii/no-jwt](https://github.com/lwojcik/eslint-plugin-no-pii/blob/main/docs/rules/no-jwt.md): JSON Web Tokens (structurally validated). Recommended: error.
 - [pii/no-mac-address](https://github.com/lwojcik/eslint-plugin-no-pii/blob/main/docs/rules/no-mac-address.md): MAC addresses. Recommended: error.
 - [pii/no-national-id](https://github.com/lwojcik/eslint-plugin-no-pii/blob/main/docs/rules/no-national-id.md): Polish PESEL/NIP, UK NINO, Spanish DNI/NIE. Recommended: error.
 - [pii/no-phone-number](https://github.com/lwojcik/eslint-plugin-no-pii/blob/main/docs/rules/no-phone-number.md): phone numbers (FR, DE, UK, US formats). Recommended: error.

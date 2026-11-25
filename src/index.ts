@@ -7,6 +7,7 @@ import noEmail from "./rules/no-email.ts";
 import noIban from "./rules/no-iban.ts";
 import noImei from "./rules/no-imei.ts";
 import noIp from "./rules/no-ip.ts";
+import noJwt from "./rules/no-jwt.ts";
 import noUrlCredentials from "./rules/no-url-credentials.ts";
 import noVin from "./rules/no-vin.ts";
 import noSsn from "./rules/no-ssn.ts";
@@ -48,6 +49,7 @@ const plugin: ESLint.Plugin = {
     "no-iban": noIban,
     "no-imei": noImei,
     "no-ip": noIp,
+    "no-jwt": noJwt,
     "no-mac-address": noMacAddress,
     "no-national-id": noNationalId,
     "no-phone-number": noPhoneNumber,
@@ -70,6 +72,7 @@ plugin.configs = {
       "pii/no-iban": "error",
       "pii/no-imei": "error",
       "pii/no-ip": "error",
+      "pii/no-jwt": "error",
       "pii/no-mac-address": "error",
       "pii/no-national-id": "error",
       "pii/no-phone-number": "error",
