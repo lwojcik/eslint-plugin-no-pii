@@ -4,7 +4,7 @@
 [![Build status](https://ci.appveyor.com/api/projects/status/github/lwojcik/eslint-plugin-no-pii?branch=main&svg=true)](https://ci.appveyor.com/project/lwojcik/eslint-plugin-no-pii/branch/main)
 [![codecov](https://codecov.io/github/lwojcik/eslint-plugin-no-pii/graph/badge.svg?token=NYSFu7WkF1)](https://codecov.io/github/lwojcik/eslint-plugin-no-pii)
 
-PII linting rules for ESLint 10.
+PII (Personally Identifiable Information) linting rules for ESLint 10.
 
 Fork of [shiva-hack/eslint-plugin-pii](https://github.com/shiva-hack/eslint-plugin-pii), modernized and updated for ESLint 10+.
 
